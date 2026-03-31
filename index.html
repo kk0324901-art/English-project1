@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sentence Formation Trainer</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <div class="bg-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+  </div>
+
+  <header class="header">
+    <div class="logo">
+      <span class="logo-icon">✦</span>
+      <span class="logo-text">SentenceForge</span>
+    </div>
+    <div class="score-display">
+      <div class="score-item">
+        <span class="score-label">Score</span>
+        <span class="score-value" id="score">0</span>
+      </div>
+      <div class="score-divider"></div>
+      <div class="score-item">
+        <span class="score-label">Streak</span>
+        <span class="score-value" id="streak">0🔥</span>
+      </div>
+      <div class="score-divider"></div>
+      <div class="score-item">
+        <span class="score-label">Round</span>
+        <span class="score-value" id="round">1</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-container">
+
+    <section class="game-card" id="game-area">
+
+      <div class="card-header">
+        <h2 class="instruction-text">Arrange the words to form a correct sentence</h2>
+        <div class="difficulty-badge" id="difficulty-badge">Easy</div>
+      </div>
+
+      <div class="sentence-display" id="sentence-display">
+        <p class="placeholder-text">Press "New Sentence" to start playing!</p>
+      </div>
+
+      <div class="word-bank-label">Word Bank — drag or click to place</div>
+      <div class="word-bank" id="word-bank"></div>
+
+      <div class="action-row">
+        <button class="btn btn-primary" id="new-btn" onclick="newSentence()">
+          <span>New Sentence</span>
+          <span class="btn-icon">→</span>
+        </button>
+        <button class="btn btn-check" id="check-btn" onclick="checkSentence()" disabled>
+          <span>Check Answer</span>
+          <span class="btn-icon">✓</span>
+        </button>
+        <button class="btn btn-clear" onclick="clearSentence()">
+          <span>Clear</span>
+          <span class="btn-icon">↺</span>
+        </button>
+      </div>
+
+      <div class="hint-row">
+        <button class="hint-btn" id="hint-btn" onclick="getHint()" disabled>💡 Show Hint</button>
+        <span class="hint-text" id="hint-text"></span>
+      </div>
+
+    </section>
+
+    <div class="feedback-card" id="feedback-card">
+      <div class="feedback-icon" id="feedback-icon"></div>
+      <div class="feedback-message" id="feedback-message"></div>
+      <div class="correct-answer" id="correct-answer-display"></div>
+    </div>
+
+    <section class="stats-row">
+      <div class="stat-card">
+        <div class="stat-number" id="total-correct">0</div>
+        <div class="stat-label">Correct</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="total-wrong">0</div>
+        <div class="stat-label">Wrong</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="best-streak">0</div>
+        <div class="stat-label">Best Streak</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="accuracy">—</div>
+        <div class="stat-label">Accuracy</div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
